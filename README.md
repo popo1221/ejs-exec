@@ -27,3 +27,5 @@ Options：
 Examples：
   ejs-exec compile template/**/*.ejs  Compile ejs in template directory to js
 ```
+## Note
+The generated js depends on the file `ejs.js` in this module (or file `ejs.umd.js` is needed if in browser client).
