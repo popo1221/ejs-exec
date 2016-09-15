@@ -1,0 +1,52 @@
+{
+  "name": "ejs-exec",
+  "version": "0.0.1",
+  "description": "ejs compiler and renderer tools",
+  "main": "build/main.js",
+  "bin": "bin/cli.js",
+  "scripts": {
+    "clean": "rimraf build/*",
+    "prebuild": "npm run lint && npm run clean",
+    "build": "babel -d build lib",
+    "lint": "eslint lib",
+    "watch": "watch 'npm run build -s' lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/popo1221/ejs-exec.git"
+  },
+  "keywords": [
+    "ejs",
+    "compiler",
+    "renderer"
+  ],
+  "author": "gabel peng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/popo1221/ejs-exec/issues"
+  },
+  "homepage": "https://github.com/popo1221/ejs-exec#readme",
+  "dependencies": {
+    "concat-with-sourcemaps": "^1.0.4",
+    "ejs": "^2.5.2",
+    "through2": "^2.0.1",
+    "vinyl": "^1.2.0",
+    "vinyl-fs": "^2.4.3",
+    "yargs": "^5.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-eslint": "^6.1.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-syntax-class-properties": "^6.13.0",
+    "babel-plugin-syntax-decorators": "^6.13.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-es2017": "^6.14.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "ejs": "^2.5.2",
+    "eslint": "^3.4.0",
+    "rimraf": "^2.5.4",
+    "watch": "^0.19.2"
+  }
+}
