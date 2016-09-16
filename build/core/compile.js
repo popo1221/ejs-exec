@@ -28,8 +28,11 @@ function compile(opts) {
     cache: false
   }, opts);
 
+  var basedir = _path2.default.resolve(opts.basedir);
+  var templateFile = _path2.default.join(__dirname, '../../template/tpl.ejs');
+
   function resolveTemplateName(file) {
-    return _path2.default.relative(opts.basedir || file.cwd, file.path).slice(0, -file.extname.length);
+    return file.relative.slice(0, -file.extname.length);
   }
 
   return _through2.default.obj(function (file, encoding, cb) {
@@ -42,18 +45,20 @@ function compile(opts) {
       return cb(new Error('Streaming is not supported!'));
     }
 
+    // Set new base
+    file.base = basedir;
+
     var templateFn = _ejs2.default.compile(file.contents.toString(), compileOpts);
     var templateName = resolveTemplateName(file);
 
     try {
-      _ejs2.default.renderFile(_path2.default.join(__dirname, 'tpl.ejs'), {
+      _ejs2.default.renderFile(templateFile, {
         templateName: templateName,
         templateBody: templateFn.toString()
       }, function (err, str) {
         if (err) {
           return cb(err);
         }
-
         file.contents = new Buffer(str);
         cb(null, file);
       });

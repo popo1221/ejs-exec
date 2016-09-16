@@ -21,6 +21,10 @@ var _concat = require('../core/concat');
 
 var _concat2 = _interopRequireDefault(_concat);
 
+var _rename = require('../core/rename');
+
+var _rename2 = _interopRequireDefault(_rename);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -126,11 +130,10 @@ function getCompileOptions(opts) {
 
 var handler = exports.handler = function handler(opts) {
   var input = opts.input;
-  var output = opts.output;
-  var outputDir = opts.outputDir;
+  var output = opts.flags.output;
+  var outputDir = opts.flags.outputDir;
 
-
-  var combine = !output;
+  var combine = !!output;
   var defaultStdout = !output && !outputDir;
   var sources = input.length ? input : '.';
   var compileOpts = getCompileOptions(opts.flags);
@@ -140,6 +143,6 @@ var handler = exports.handler = function handler(opts) {
   } else if (combine) {
     _vinylFs2.default.src(sources).pipe((0, _compile2.default)(compileOpts)).pipe((0, _concat2.default)(output)).pipe(_vinylFs2.default.dest(process.cwd));
   } else {
-    _vinylFs2.default.src(sources).pipe((0, _compile2.default)(compileOpts)).pipe(_vinylFs2.default.dest(outputDir));
+    _vinylFs2.default.src(sources).pipe((0, _compile2.default)(compileOpts)).pipe((0, _rename2.default)({ extname: '.js' })).pipe(_vinylFs2.default.dest(outputDir));
   }
 };

@@ -1,6 +1,6 @@
 {
   "name": "ejs-exec",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "ejs compiler and renderer tools",
   "main": "ejs.js",
   "bin": "bin/cli.js",
