@@ -1,14 +1,14 @@
 {
   "name": "ejs-exec",
-  "version": "0.1.1",
-  "description": "ejs compiler and renderer tools",
-  "main": "ejs.js",
+  "version": "0.2.0",
+  "description": "ejs compile and render tools",
+  "main": "dist/ejs.js",
   "bin": "bin/cli.js",
   "scripts": {
     "clean": "rimraf build/* dist/*",
     "prebuild": "npm run lint && npm run clean",
     "build:cli": "babel -d build lib",
-    "build:ejs": "babel -o dist/ejs.umd.js ejs.js --plugins transform-es2015-modules-umd",
+    "build:ejs": "babel -o dist/ejs.js ejs.js --plugins transform-es2015-modules-umd",
     "build": "npm run build:cli && npm run build:ejs",
     "lint": "eslint lib",
     "watch": "watch 'npm run build -s' lib"
