@@ -8,6 +8,10 @@ var _compile = require('./command/compile');
 
 var Compile = _interopRequireWildcard(_compile);
 
+var _render = require('./command/render');
+
+var Render = _interopRequireWildcard(_render);
+
 var _package = require('../package.json');
 
 var _package2 = _interopRequireDefault(_package);
@@ -16,7 +20,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var commands = [Compile];
+var commands = [Compile, Render];
 var epilogue = ['For help running a certain command, type <command> --help', 'eg: $0 compile --help'].join('\n');
 
 var yargs = _yargs2.default.version(function () {
