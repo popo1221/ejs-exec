@@ -53,6 +53,10 @@ var options = exports.options = {
     default: '.',
     desc: 'An absolute path to the directory that relative paths are *relative to* ejs template files'
   },
+  template: {
+    alias: 't',
+    desc: 'The template to generate js code. `templateBody` and `templateName` can be used in the template.'
+  },
   debug: {
     type: 'boolean',
     alias: 'd',
@@ -112,6 +116,7 @@ function getCompileOptions(opts) {
   var basedir = opts.basedir;
   var delimiter = opts.delimiter;
   var localsName = opts.localsName;
+  var template = opts.template;
 
 
   var _with = opts['with'];
@@ -124,6 +129,7 @@ function getCompileOptions(opts) {
     basedir: basedir,
     delimiter: delimiter,
     localsName: localsName,
+    template: template,
     _with: _with
   };
 }

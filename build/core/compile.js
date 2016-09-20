@@ -29,7 +29,7 @@ function compile(opts) {
   }, opts);
 
   var basedir = _path2.default.resolve(opts.basedir);
-  var templateFile = _path2.default.join(__dirname, '../../template/tpl.ejs');
+  var templateFile = opts.template || _path2.default.join(__dirname, '../../template/tpl.ejs');
 
   function resolveTemplateName(file) {
     return file.relative.slice(0, -file.extname.length);
