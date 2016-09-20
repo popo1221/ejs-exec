@@ -1,6 +1,8 @@
 # ejs-exec
 An ejs compile and render tool.
 
+
+## The compile command
 ```
 Usage: ejs-exec compile [sources...] [options]
 
@@ -27,6 +29,22 @@ Options：
 Examples：
   ejs-exec compile template/**/*.ejs  Compile ejs in template directory to js
 ```
+
+## The render command 
+```
+Usage: ejs-exec render <templateFile> [options]
+
+Options：
+  --version, -v  Show version number                                      [boolean]
+  --output, -o   Output file (stdout if not provided)
+  --data, -D     Specified the data file
+  --help, -h     Show help                                                [boolean]
+
+Examples：
+  ejs-exec render template/test.ejs       Render template/test.ejs with data
+  --data data.json -o test.html             of data.json
+```
+
 ## Note
 - The file dist/ejs.js is required when using the tool.
 - [es5-shim](https://github.com/es-shims/es5-shim) is required when in browser(<= IE8).
